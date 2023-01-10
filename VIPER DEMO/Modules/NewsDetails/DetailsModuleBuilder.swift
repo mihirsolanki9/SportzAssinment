@@ -9,13 +9,12 @@ import Foundation
 import UIKit
 
 class DetailsModuleBuilder {
-    static func build(factory:NavigationFactory, newsUrl:String) -> UIViewController{
+    static func build() -> UIViewController{
         let view = DetailsVC()
         let interactor = DetailsInteractor()
         let router = DetailsRouter.init(view: view)
         let presenter = DetailsViewPresenter.init(view: view, interactor: interactor, router: router)
         view.presenter = presenter
-        view.newsUrl = newsUrl
         return view
     }
 }

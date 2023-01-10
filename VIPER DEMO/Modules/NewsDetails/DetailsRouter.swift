@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol DetailsNewsRouterProtocol: AnyObject{
+protocol DetailsRouterProtocol: AnyObject{
     func redirectToWebPage()
 }
 
@@ -19,7 +19,7 @@ class DetailsRouter {
     }
 }
 
-extension DetailsRouter: DetailsNewsRouterProtocol{
+extension DetailsRouter: DetailsRouterProtocol{
     func redirectToWebPage() {
       print("Hello")
     }

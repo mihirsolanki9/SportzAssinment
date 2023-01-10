@@ -22,6 +22,7 @@ class MatchRouter {
 extension MatchRouter: MatchRouterProtocol{
     func redirectToWebPage() {
         let vc = DetailsModuleBuilder.build()
+        vc.modalPresentationStyle = .fullScreen
         self.view.present(vc, animated: true)
     }
 }

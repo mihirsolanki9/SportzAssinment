@@ -8,12 +8,19 @@
 import Foundation
 
 protocol DetailsInteractorProtocol: AnyObject {
-    func fetchNewsApi(completion: @escaping () -> ())
+    func fetchPlayersApi(completion: @escaping (MatchModel?) -> ())
 }
 
 class DetailsInteractor: DetailsInteractorProtocol{
-    func fetchNewsApi(completion: @escaping () -> ()) {
-        //
+    func fetchPlayersApi(completion: @escaping (MatchModel?) -> ()) {
+        NewsDataManager.shared.NewsFeedManager() { result in
+            switch result {
+            case.success(let data):
+                completion(data)
+            case.failure(_):
+                completion(nil)
+                break
+            }
+        }
     }
-    
 }

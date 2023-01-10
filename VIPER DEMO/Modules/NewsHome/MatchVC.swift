@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NewsViewProtocol: AnyObject{
+protocol MatchViewProtocol: AnyObject{
     func getNewsFeed(data:MatchModel)
 }
 
@@ -15,13 +15,13 @@ class MatchVC: UIViewController {
     @IBOutlet weak var squadsBtn: UIButton!
     @IBOutlet weak var venueLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-    var presenter: NewsPresenter?
+    var presenter: MatchPresenter?
     @IBOutlet weak var timeLbl: UILabel!
-    var newsFeedArray: Player?
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var matchNameLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         presenter?.getHomeApiData()
     }
     
@@ -29,9 +29,14 @@ class MatchVC: UIViewController {
         presenter?.redirectToDetails()
     }
     
+    func setUI() {
+        cardView.layer.cornerRadius = 15
+        squadsBtn.layer.cornerRadius = 10
+    }
+    
 }
 
-extension MatchVC: NewsViewProtocol {
+extension MatchVC: MatchViewProtocol {
     func getNewsFeed(data: MatchModel) {
         print(data.teams[data.matchdetail.teamHome]?.players)
         dateLbl.text = "Date:- " + (data.matchdetail.match.date )

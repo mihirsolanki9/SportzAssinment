@@ -36,8 +36,7 @@ class ServerDataManager: NSObject {
     func getHeaders(method: APIMETHOD, cachePolicy: Bool = true) -> HTTPHeaders {
         switch method {
         case .POST:
-            return ["Content-Type": "application/json","Accept": "*/*","x-access-auth-token" : authToken ,
-                    "update": String(1), "token": String(CreateTokenManager.shared.createTokenData?.token ?? ""), "version":"V3"
+            return ["Content-Type": "application/json","Accept": "*/*","x-access-auth-token" : authToken
             ]
             
         case .GET:
